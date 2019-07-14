@@ -1,0 +1,32 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.index{
+    padding: 15px 15px;
+    font-family: 'Bree Serif', serif;
+    .logo {
+        margin-top: -6px;
+        margin-left: 10px;
+    }
+    .barra {
+        width: 96%;
+        padding-left: 5px;
+        padding-right: 25px;
+        .link {
+            padding-left: 20px;
+            font-size: 18px;
+            margin-top: 5px;
+            color: gray;
+        }
+        .menu {
+            cursor: pointer;
+        }
+    }
+    .post {
+        padding: 5px 65px;
+    }
+    .dropdown-menu {
+        margin-left: -120px;
+    }
+}
