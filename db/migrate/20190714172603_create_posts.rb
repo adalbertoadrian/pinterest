@@ -1,9 +1,9 @@
 class CreatePosts < ActiveRecord::Migration[6.0]
   def change
     create_table :posts do |t|
-      t.string :titulo
-      t.string :descripcion
-      t.string :imagen
+      t.string :title
+      t.string :description
+      t.integer :img_id
       t.integer :user_id
 
       t.timestamps

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'posts/new'
   get 'posts/view'
   get 'posts/edit'
+
+  post 'posts/create'
   #Pages
   get 'pages/index'
   get 'pages/contact'
