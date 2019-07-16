@@ -7,5 +7,40 @@
     font-family: 'Bree Serif', serif;
     .post {
         padding: 5px 65px;
+        .entry {
+            position: relative;
+            overflow: hidden;
+            margin: 8px;
+            border-radius: 15px;
+            padding: 0 0 0 0;
+            a {
+                cursor: zoom-in;
+            }
+            .imagen {
+                background-color: black;
+                padding: 0 0 0 0;
+                img {
+                    left: 50%;
+                    margin-left: -150px;
+                }
+            }
+            .title {
+                margin-top: -35px;
+                margin-left: 15px;
+                display: none;
+                color: white;
+                position: absolute;
+            }
+            &:hover {
+                .imagen {
+                    img {
+                        opacity: 0.5;
+                    }
+                }
+                .title {
+                    display: block;
+                }
+            }
+        }
     }
 }

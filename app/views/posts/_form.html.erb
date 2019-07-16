@@ -1,0 +1,28 @@
+<%= form_for :post, :url => { :action => method } do |f| %>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <%= f.label :Título, for:"titulo" %>
+                <%= f.text_field :title, class:"form-control", id:"titulo" %>
+            </div>
+            <div class="form-group">
+                <%= f.label :Descripción, for:"descripcion" %>
+                <%= f.text_area :description, class:"form-control", id:"descripcion", rows:15 %>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <%= f.label :Imagen, for:"file" %>
+                <%= f.file_field :img_name, class:"form-control", id:"file", accept:"image/*" %>
+            </div>
+            <div class="form-group">
+                <div id="imagen"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <%= f.submit :Guardar, class:"btn btn-primary" %>
+        </div>
+    </div>
+<% end %>

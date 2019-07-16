@@ -1,10 +1,12 @@
 <div class="index">
     <div class="post row">
-        <div class="col-sm-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae id ipsum ratione, eos asperiores ipsa aliquid nam recusandae delectus provident perspiciatis omnis autem pariatur veritatis officia quasi iusto dolorum placeat.</div>
-        <div class="col-sm-2">Sit iure rerum esse accusantium quod cupiditate consectetur? Similique minus nostrum harum, soluta tempora fugiat earum, odio consequuntur accusamus magni tempore voluptatibus nisi eos eveniet expedita veniam exercitationem. Quos, accusantium.</div>
-        <div class="col-sm-2">Amet, commodi reprehenderit ipsa iure provident voluptatibus delectus, porro minima molestias laudantium vel sint. Voluptates autem sed incidunt alias quam aperiam, nulla, quis, illum esse magni sint eaque fugit odit?</div>
-        <div class="col-sm-2">Repellat repudiandae debitis sequi dolore ullam porro, minima, officiis vel soluta enim doloribus! Officiis voluptate deserunt ducimus nulla necessitatibus animi dolor iusto dolorum repellendus nostrum, illum laboriosam molestiae porro suscipit!</div>
-        <div class="col-sm-2">Ipsa temporibus quae libero, repudiandae impedit animi sapiente natus repellendus aliquam quos? Quia sit ipsam officiis sint, atque veritatis dolore laboriosam numquam nihil reiciendis delectus deserunt ut adipisci similique in?</div>
-        <div class="col-sm-2">Maiores quae commodi similique consequatur numquam veritatis, dignissimos laboriosam voluptas sit! Sint nostrum est corrupti alias ut, pariatur debitis velit? Quod veniam magnam sunt incidunt eveniet. Velit earum maiores distinctio?</div>
+    <% @posts.each do |post| %>
+      <tr>
+        <div class="entry col-sm-2">
+            <div class="imagen"><%=link_to image_tag(root_path+"uploads/"+post.img_name), posts_view_path(post) %></div>
+            <div class="title"><%= post.title %></div>
+        </div>
+      </tr>
+    <% end %>
     </div>
 </div>

@@ -12,3 +12,29 @@
         padding: 0 0 0 0;
     }
 }
+.view_post{
+    font-family: 'Bree Serif', serif;
+    .titulo, .imagen, .descripcion, .botones {
+        text-align: center;
+        display: block;
+    }
+    .titulo, .imagen {
+        margin-bottom: 50px;
+    }
+    .descripcion {
+        font-size: 24px;
+    }
+    .editar {
+        margin-right: 5px;
+    }
+    .imagen > img {
+        border-radius: 15px;
+    }
+    .botones {
+        margin-bottom: 20px;
+        .editar, .eliminar {
+            font-size: 24px;
+            color: gray;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   #Posts
   get 'posts/new'
-  get 'posts/view'
+  get 'posts/view/:id', to: 'posts#view', as: 'posts_view'
   get 'posts/edit'
 
   post 'posts/create'
