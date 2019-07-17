@@ -1,7 +1,7 @@
 <div class="view_post container">
     <div class="row botones">
-        <i class="fas fa-pencil-alt editar"></i>
-        <i class="fas fa-trash eliminar"></i>
+        <%=link_to content_tag(:i, '', :class => "fas fa-pencil-alt editar"), posts_edit_path(@post) %></i>
+        <%=link_to content_tag(:i, '', :class => "fas fa-trash eliminar"), posts_destroy_path(@post.id) %></i>
     </div>
     <div class="row imagen">
         <%= image_tag(root_path+"uploads/"+@post.img_name) %>

@@ -3,7 +3,7 @@
         <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
     <h1>Nuevo Post</h1>
-    <%= render 'posts/form', method: 'create' %>
+    <%= render 'posts/form', action: 'create' %>
 </div>
 <script>
     function filePreview(input) {

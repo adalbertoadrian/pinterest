@@ -1,2 +1,7 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class="edit_post container">
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <h1>Editar Post</h1>
+    <%= render 'posts/form', action: 'update' %>
+</div>

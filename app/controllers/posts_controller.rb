@@ -13,9 +13,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    params[:post][:img_name] = upload(params[:post][:img_name])
+    @post[:img_name] = upload(params[:post][:img_name])
 
-    if @post.update(post_params)
+    if @post.save
       flash[:success] = "Post guardado correctamente"
       redirect_to posts_new_path(@post)
     else
@@ -24,11 +24,24 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+    #ap post_params
+    Post.update(post_params)
+  end
+
   def view()
     @post = Post.find(params[:id])
   end
 
   def edit
+    @post = Post.find(params[:id])
+  end
+
+  def destroy
+    if Post.destroy(params[:id])
+      flash[:success] = "Post Eliminado correctamente"
+      redirect_to root_path
+    end
   end
 
   private
