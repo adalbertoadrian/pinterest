@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'posts/destroy/:id', to: 'posts#destroy', as: 'posts_destroy'
 
   post 'posts/create'
-  post 'posts/update/:id', to: 'posts#update', as: 'posts_update'
+  post 'posts/update', to: 'posts#update', as: 'posts_update'
   #Pages
   get 'pages/index'
   get 'pages/contact'

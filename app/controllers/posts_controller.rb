@@ -25,8 +25,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    #ap post_params
-    Post.update(post_params)
+    @post = Post.find_by(params[:post][:id])
+    if @post.update(post_params)
+      flash[:success] = "Post Editado correctamente"
+      redirect_to root_path
+    end
   end
 
   def view()
