@@ -2,14 +2,14 @@
     <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
-    <div class="post row">
-    <% @posts.each do |post| %>
-      <tr>
-        <div class="entry col-sm-2">
-            <div class="imagen"><%=link_to image_tag(root_path+"uploads/"+post.img_name), posts_view_path(post) %></div>
+    <div class="post ">
+      <div class="card-columns">
+        <% @posts.each do |post| %>
+          <div class="card">
+            <%=link_to image_tag(root_path+"uploads/"+post.img_name, class: "card-img-top", alt: "Card image"), posts_view_path(post) %>
             <div class="title"><%= post.title %></div>
-        </div>
-      </tr>
-    <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
 </div>

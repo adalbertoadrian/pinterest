@@ -2,40 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.index{
+.index {
     padding: 15px 15px;
     font-family: 'Bree Serif', serif;
     .post {
         padding: 5px 65px;
-        .entry {
-            position: relative;
-            overflow: hidden;
-            margin: 8px;
+        .card-columns {
+            column-count: 5;
+        }
+        .card {
+            border: none;
+            background-color: black;
             border-radius: 15px;
-            padding: 0 0 0 0;
-            a {
+            img {
+                border-radius: 15px;
                 cursor: zoom-in;
             }
-            .imagen {
-                background-color: black;
-                padding: 0 0 0 0;
-                img {
-                    left: 50%;
-                    margin-left: -150px;
-                }
-            }
             .title {
-                margin-top: -35px;
-                margin-left: 15px;
-                display: none;
-                color: white;
                 position: absolute;
+                color: white;
+                bottom: 0;
+                width: 100%;
+                text-align: left;
+                display: none;
+                padding-left: 15px;
+                padding-bottom: 5px;
             }
             &:hover {
-                .imagen {
-                    img {
-                        opacity: 0.5;
-                    }
+                img {
+                    opacity: 0.5;
+                    transition: 0.5s all;
                 }
                 .title {
                     display: block;
