@@ -3,7 +3,7 @@
         <%=link_to image_tag("pinterest.jpg", style:"width:60px; height:50px"), root_path%> 
     </div>
     <div class="barra input-group mb-3">
-        <div class="col-sm-9">
+        <div class="col-sm-10">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
                 <%= form_for :search, :url => { :action => 'find', :controller => 'posts' }, model: @find do |f|  %>
@@ -14,17 +14,21 @@
         <div class="col-sm-1">
             <div class="link"><%=link_to "Inicio", root_path%></div>
         </div>
+        <% if !user_signed_in? %>
         <div class="col-sm-1">
-            <div class="user">Adalberto</div>
+            <div class="link"><%=link_to "Login", new_user_session_path%></div>
         </div>
-        <div class="col-sm-1">
-            <div class="dropdown">
-                <div class="menu" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></div>
-                <div class="dropdown-menu">
-                    <%=link_to "Nuevo Post", posts_new_path, class:"dropdown-item"%>
-                    <a class="dropdown-item" href="#">Cerrar Sesión</a>
+        <% end %>
+        <% if user_signed_in? %>
+            <div class="col-sm-1">
+                <div class="dropdown">
+                    <div class="menu" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></div>
+                    <div class="dropdown-menu">
+                        <%=link_to "Nuevo Post", posts_new_path, class:"dropdown-item"%>
+                        <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method='delete'>Cerrar Sesión</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        <% end %>
     </div>
 </div>

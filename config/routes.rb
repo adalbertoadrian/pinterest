@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   #Posts
   get 'posts/new'
   get 'posts/view/:id', to: 'posts#view', as: 'posts_view'
