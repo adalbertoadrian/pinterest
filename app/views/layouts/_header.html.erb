@@ -3,17 +3,27 @@
         <%=link_to image_tag("pinterest.jpg", style:"width:60px; height:50px"), root_path%> 
     </div>
     <div class="barra input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+        <div class="col-sm-9">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                <%= form_for :search, :url => { :action => 'find', :controller => 'posts' }, model: @find do |f|  %>
+                    <%= f.text_field :find, class:"form-control", id:"find", placeholder:"Buscar" %>
+                <% end %>
+            </div>
         </div>
-        <input type="text" class="form-control" placeholder="Buscar" aria-label="Username" aria-describedby="basic-addon1">
-        <div class="link"><%=link_to "Inicio", root_path%></div>
-        <div class="link">Adalberto</div>
-        <div class="dropdown">
-            <div class="link menu" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></div>
-            <div class="dropdown-menu">
-                <%=link_to "Nuevo Post", posts_new_path, class:"dropdown-item"%>
-                <a class="dropdown-item" href="#">Cerrar Sesión</a>
+        <div class="col-sm-1">
+            <div class="link"><%=link_to "Inicio", root_path%></div>
+        </div>
+        <div class="col-sm-1">
+            <div class="user">Adalberto</div>
+        </div>
+        <div class="col-sm-1">
+            <div class="dropdown">
+                <div class="menu" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></div>
+                <div class="dropdown-menu">
+                    <%=link_to "Nuevo Post", posts_new_path, class:"dropdown-item"%>
+                    <a class="dropdown-item" href="#">Cerrar Sesión</a>
+                </div>
             </div>
         </div>
     </div>

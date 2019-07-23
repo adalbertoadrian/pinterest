@@ -1,5 +1,8 @@
 <%= form_for :post, :url => { :action => action }, model: @post do |f| %>
     <div class="row">
+        <% if action == 'update' %>
+            <%= f.hidden_field :id, id:"id" %>
+        <% end if %>
         <div class="col-sm-6">
             <div class="form-group">
                 <%= f.label :Título, for:"titulo" %>

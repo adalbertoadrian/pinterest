@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   post 'posts/create'
   post 'posts/update', to: 'posts#update', as: 'posts_update'
+  post 'post/find', to: 'posts#find'
   #Pages
-  get 'pages/index'
   get 'pages/contact'
   #Root
   root 'pages#index'

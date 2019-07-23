@@ -2,37 +2,38 @@ class PostsController < ApplicationController
   def new
   end
 
-
   def upload(uploaded_io)
-    @name = SecureRandom.uuid + File.extname(uploaded_io)
-    File.open(Rails.root.join('public', 'uploads', @name), 'wb') do |file|
+    name = SecureRandom.uuid + File.extname(uploaded_io)
+    File.open(Rails.root.join('public', 'uploads', name), 'wb') do |file|
       file.write(uploaded_io.read)
     end
-    return @name
+    return name
   end
 
   def create
-    @post = Post.new(post_params)
-    @post[:img_name] = upload(params[:post][:img_name])
+    post = Post.new(post_params)
+    post[:img_name] = upload(params[:post][:img_name])
 
-    if @post.save
+    if post.save
       flash[:success] = "Post guardado correctamente"
-      redirect_to posts_new_path(@post)
+      redirect_to posts_new_path
     else
       flash[:danger] = "Error al guardar Post"
-      redirect_to posts_new_path(@post)
+      redirect_to posts_new_path
     end
   end
 
   def update
-    @post = Post.find_by(params[:post][:id])
-    if @post.update(post_params)
+    edit = Post.find_by(id: params[:post][:id])
+    edit.title = params[:post][:title]
+    edit.description = params[:post][:description]
+    if edit.save
       flash[:success] = "Post Editado correctamente"
       redirect_to root_path
     end
   end
 
-  def view()
+  def view
     @post = Post.find(params[:id])
   end
 
@@ -45,6 +46,15 @@ class PostsController < ApplicationController
       flash[:success] = "Post Eliminado correctamente"
       redirect_to root_path
     end
+  end
+
+  def find
+    if params[:search][:find] != ''
+      @posts = Post.where("UPPER(title) LIKE ?", params[:search][:find].upcase)
+    else
+      @posts = Post.all.order(:id)
+    end
+    render "pages/index"
   end
 
   private
