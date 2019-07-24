@@ -8,6 +8,7 @@
     <% end %>
     <div class="row imagen">
         <%= image_tag(root_path+"uploads/"+@post.img_name) %>
+        <span class="posted_by">Posteado por <%= @post.user.name %></span>
     </div>
     <div class="row titulo"><h1><%= @post.title %></h1></div>
     <div class="row descripcion"><%= @post.description %></div>

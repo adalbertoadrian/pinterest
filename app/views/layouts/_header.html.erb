@@ -3,7 +3,7 @@
         <%=link_to image_tag("pinterest.jpg", style:"width:60px; height:50px"), root_path%> 
     </div>
     <div class="barra input-group mb-3">
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
                 <%= form_for :search, :url => { :action => 'find', :controller => 'posts' }, model: @find do |f|  %>
@@ -15,9 +15,13 @@
             <div class="link"><%=link_to "Inicio", root_path%></div>
         </div>
         <% if !user_signed_in? %>
-        <div class="col-sm-1">
-            <div class="link"><%=link_to "Login", new_user_session_path%></div>
-        </div>
+            <div class="col-sm-2">
+                <div class="link inicioSesion"><%=link_to "Login", new_user_session_path%></div>
+            </div>
+        <% else %>
+            <div class="col-sm-1">
+                <div class="link"><%= current_user[:name] %></div>
+            </div>
         <% end %>
         <% if user_signed_in? %>
             <div class="col-sm-1">

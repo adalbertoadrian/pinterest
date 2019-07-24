@@ -11,6 +11,9 @@
         border: none;
         padding: 0 0 0 0;
     }
+    img {
+        max-width: 450px;     
+    }
 }
 .view_post{
     font-family: 'Bree Serif', serif;
@@ -29,6 +32,12 @@
     }
     .imagen > img {
         border-radius: 15px;
+        max-width: 600px;
+    }
+    .posted_by {
+        text-align: center;
+        display: block;
+        width: 100%;     
     }
     .botones {
         margin-bottom: 20px;

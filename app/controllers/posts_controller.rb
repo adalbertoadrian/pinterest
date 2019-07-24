@@ -35,6 +35,8 @@ class PostsController < ApplicationController
 
   def view
     @post = Post.find(params[:id])
+  
+    ap  @post.user.name
   end
 
   def edit
