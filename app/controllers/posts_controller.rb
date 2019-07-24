@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :find, :view]
   def new
   end
 
@@ -13,7 +14,6 @@ class PostsController < ApplicationController
   def create
     post = Post.new(post_params)
     post[:img_name] = upload(params[:post][:img_name])
-
     if post.save
       flash[:success] = "Post guardado correctamente"
       redirect_to posts_new_path
@@ -60,6 +60,6 @@ class PostsController < ApplicationController
   private
     # Valido los campos permitidos
     def post_params
-      params.require(:post).permit(:title, :description, :img_name)
+      params.require(:post).permit(:title, :description, :img_name, :user_id)
     end
 end

@@ -2,7 +2,10 @@
     <div class="row">
         <% if action == 'update' %>
             <%= f.hidden_field :id, id:"id" %>
-        <% end if %>
+        <% end %>
+        <% if action == 'create' %>
+            <%= f.hidden_field :user_id, value: current_user[:id] %>
+        <% end %>
         <div class="col-sm-6">
             <div class="form-group">
                 <%= f.label :Título, for:"titulo" %>
