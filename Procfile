@@ -1,2 +1,2 @@
-mkdir public/uploads
-chmod -R 777 public/uploads
+worker: mkdir public/uploads
+worker: chmod -R 777 public/uploads
