@@ -8,9 +8,11 @@
         <% @posts.each do |post| %>
           <div class="card">
             <%=link_to image_tag(root_path+"uploads/"+post.img_name, class: "card-img-top", alt: "Card image"), posts_view_path(post) %>
-            <div class="like uncheck">
-              <i class="far fa-heart"></i>
-            </div>
+            <% if user_signed_in? %>
+              <div class="like uncheck">
+                <i class="far fa-heart"></i>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>

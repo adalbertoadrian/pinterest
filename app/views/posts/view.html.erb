@@ -1,9 +1,11 @@
 <%= render "layouts/header" %>
 <div class="view_post container">
-    <div class="row botones">
-        <%=link_to content_tag(:i, '', :class => "fas fa-pencil-alt editar"), posts_edit_path(@post) %></i>
-        <%=link_to content_tag(:i, '', :class => "fas fa-trash eliminar"), posts_destroy_path(@post.id) %></i>
-    </div>
+    <% if user_signed_in? %>
+        <div class="row botones">
+            <%=link_to content_tag(:i, '', :class => "fas fa-pencil-alt editar"), posts_edit_path(@post) %></i>
+            <%=link_to content_tag(:i, '', :class => "fas fa-trash eliminar"), posts_destroy_path(@post.id) %></i>
+        </div>
+    <% end %>
     <div class="row imagen">
         <%= image_tag(root_path+"uploads/"+@post.img_name) %>
     </div>
