@@ -11,9 +11,15 @@ class PostsController < ApplicationController
     return name
   end
 
+  def uploadCloudinary(uploaded_io)
+    result = Cloudinary::Uploader.upload(uploaded_io)
+    return result["public_id"]
+  end
+
   def create
     post = Post.new(post_params)
-    post[:img_name] = upload(params[:post][:img_name])
+    post[:img_name] = uploadCloudinary(params[:post][:img_name]) #Sube Imagen a Cloudinary
+    post[:ext] = File.extname(params[:post][:img_name])
     if post.save
       flash[:success] = "Post guardado correctamente"
       redirect_to posts_new_path
@@ -35,8 +41,6 @@ class PostsController < ApplicationController
 
   def view
     @post = Post.find(params[:id])
-  
-    ap  @post.user.name
   end
 
   def edit
@@ -44,10 +48,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    deleteCloudinary(params[:id]) #Borrar Imagen en Cloudinary
     if Post.destroy(params[:id])
       flash[:success] = "Post Eliminado correctamente"
       redirect_to root_path
     end
+  end
+
+  def deleteCloudinary(id)
+    post = Post.find(id)
+    Cloudinary::Uploader.destroy(post[:img_name])
   end
 
   def find

@@ -7,7 +7,7 @@
       <div class="card-columns">
         <% @posts.each do |post| %>
           <div class="card">
-            <%=link_to image_tag(root_path+"uploads/"+post.img_name, class: "card-img-top", alt: "Card image"), posts_view_path(post) %>
+            <%=link_to cl_image_tag(post.img_name+post.ext, class: "card-img-top", alt: "Card image"), posts_view_path(post) %>
             <% if user_signed_in? %>
               <div class="like uncheck">
                 <i class="far fa-heart"></i>

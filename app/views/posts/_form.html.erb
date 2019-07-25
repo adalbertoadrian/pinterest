@@ -26,7 +26,7 @@
             <div class="form-group">
                 <div id="imagen">
                     <% if action == "update" %>
-                        <%= image_tag(root_path+"uploads/"+@post.img_name) %>
+                        <%= cl_image_tag(@post.img_name+@post.ext,) %>
                     <% end %>
                 </div>
             </div>
