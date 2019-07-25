@@ -1,9 +1,9 @@
 <%= render "layouts/header" %>
 <div class="view_post container">
-    <% if user_signed_in? %>
+    <% if user_signed_in? && current_user[:id] == @post.user_id %>
         <div class="row botones">
             <%=link_to content_tag(:i, '', :class => "fas fa-pencil-alt editar"), posts_edit_path(@post) %></i>
-            <%=link_to content_tag(:i, '', :class => "fas fa-trash eliminar"), posts_destroy_path(@post.id) %></i>
+            <%=link_to content_tag(:i, '', :class => "fas fa-trash eliminar"), posts_destroy_path(@post.id), data: { confirm: 'Esta seguro que desea borrar este post?' } %></i>
         </div>
     <% end %>
     <div class="row imagen">

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :find, :view]
+  before_action :authenticate_user!, except: [:index, :find, :view, :findMyPosts]
   def new
   end
 
@@ -66,6 +66,11 @@ class PostsController < ApplicationController
     else
       @posts = Post.all.order(:id)
     end
+    render "pages/index"
+  end
+
+  def findMyPosts()
+    @posts = Post.where("user_id = ?", params[:id])
     render "pages/index"
   end
 
