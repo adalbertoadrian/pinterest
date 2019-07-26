@@ -9,6 +9,7 @@
     <div class="row imagen">
         <%= cl_image_tag(@post.img_name+@post.ext) %>
         <span class="posted_by">Posteado por <%= @post.user.name %></span>
+        <span class="likes"><i class="fas fa-heart"></i> <%= @post.likes.count %></span>
     </div>
     <div class="row titulo"><h1><%= @post.title %></h1></div>
     <div class="row descripcion"><%= @post.description %></div>

@@ -39,6 +39,9 @@
         display: block;
         width: 100%;     
     }
+    .posted_by, .likes {
+        color: #848484;
+    }
     .botones {
         margin-bottom: 20px;
         .editar, .eliminar {
