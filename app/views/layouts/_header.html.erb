@@ -20,7 +20,7 @@
             </div>
         <% else %>
             <div class="col-sm-1">
-                <div class="link"><%= current_user[:name] %></div>
+                <div class="link"><i class="fas fa-user-circle"></i> <%= current_user[:name] %></div>
             </div>
         <% end %>
         <% if user_signed_in? %>
