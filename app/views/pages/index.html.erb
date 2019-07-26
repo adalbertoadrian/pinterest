@@ -8,10 +8,16 @@
         <% @posts.each do |post| %>
           <div class="card">
             <%=link_to cl_image_tag(post.img_name+post.ext, class: "card-img-top", alt: "Card image"), posts_view_path(post) %>
-            <% if user_signed_in? %>
-              <div class="like uncheck">
-                <i class="far fa-heart"></i>
-              </div>
+            <% if user_signed_in? && post.user_id != current_user[:id] %>
+              <% if post.likes.where(user_id: current_user[:id]).count == 1 %>
+                <div post_id="<%= post.id %>" class="like check">
+                  <i class="fas fa-heart"></i>
+                </div>
+              <% else %>
+                <div post_id="<%= post.id %>" class="like uncheck">
+                  <i class="far fa-heart"></i>
+                </div>
+              <% end %>
             <% end %>
           </div>
         <% end %>
@@ -20,6 +26,7 @@
 </div>
 <script>
   $( ".like" ).on( "click", function(e) {
+    var post_id = $(this).attr("post_id");
     if($(this).hasClass("uncheck")) {
       $(this).removeClass("uncheck");
       $(this).addClass("check");
@@ -29,5 +36,8 @@
       $(this).removeClass("check");
       $(this).html("<i class='far fa-heart'></i>");
     }
+    $.ajax({url: '<%= root_url+"posts/likes/" %>'+post_id,
+      dataType:'JSON'
+    });
   });
 </script>

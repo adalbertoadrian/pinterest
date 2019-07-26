@@ -69,9 +69,26 @@ class PostsController < ApplicationController
     render "pages/index"
   end
 
-  def findMyPosts()
+  def findMyPosts
     @posts = Post.where("user_id = ?", params[:id])
     render "pages/index"
+  end
+
+  def findMyLikes
+    @posts = Post.left_outer_joins(:likes).where("likes.user_id = ?", current_user[:id])
+    render "pages/index"
+  end
+
+  def likes
+    like = Like.where(post_id: params[:id], user_id: current_user[:id])
+    if like.count == 0
+      l = Like.new
+      l.post_id = params[:id]
+      l.user_id = current_user[:id]
+      l.save
+    else
+      Like.destroy(like[0][:id])
+    end
   end
 
   private

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'posts/edit/:id', to: 'posts#edit', as: 'posts_edit'
   get 'posts/destroy/:id', to: 'posts#destroy', as: 'posts_destroy'
   get 'posts/myPosts/:id', to: 'posts#findMyPosts', as: 'posts_my_posts'
+  get 'posts/likes/:id', to: 'posts#likes', as: 'post_likes'
+  get 'posts/myLikes', to: 'posts#findMyLikes', as: 'posts_my_likes'
 
   post 'posts/create'
   post 'posts/update', to: 'posts#update', as: 'posts_update'
