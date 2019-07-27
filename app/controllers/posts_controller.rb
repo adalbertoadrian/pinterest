@@ -75,7 +75,7 @@ class PostsController < ApplicationController
   end
 
   def findMyLikes
-    @posts = Post.left_outer_joins(:likes).where("likes.user_id = ?", current_user[:id])
+    @posts = Post.joins(:likes).where("likes.user_id = ?", current_user[:id])
     render "pages/index"
   end
 
