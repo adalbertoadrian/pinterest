@@ -62,7 +62,7 @@ class PostsController < ApplicationController
 
   def find
     if params[:search][:find] != ''
-      @posts = Post.where("UPPER(title) LIKE ?", params[:search][:find].upcase)
+      @posts = Post.where("UPPER(title) LIKE ?", '%'+params[:search][:find].upcase+'%')
     else
       @posts = Post.all.order(:id)
     end
@@ -70,7 +70,7 @@ class PostsController < ApplicationController
   end
 
   def findMyPosts
-    @posts = Post.where("user_id = ?", params[:id])
+    @posts = Post.where("user_id = ?", current_user[:id])
     render "pages/index"
   end
 
